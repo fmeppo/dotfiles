@@ -1,0 +1,92 @@
+! You can ask HTTP (Web) servers for documents in your preferred language
+*menuBar*openBrowser.labelString:	New Wibble Browser
+*menuBar*howTo.labelString:		How to Create Wibble Services
+*howTo.documentationString:         How to create Wibble services
+
+!
+! Mouse wheel stuff
+!
+
+!# Scrolling on wheel mouse: half a page normally, line per line with shift
+XTerm.vt100.translations: #override\n\
+ Shift<Btn4Down>,<Btn4Up>:scroll-back(1,line)\n\
+ Shift<Btn5Down>,<Btn5Up>:scroll-forw(1,line)\n\
+ Ctrl<Btn4Down>,<Btn4Up>:scroll-back(1,page)\n\
+ Ctrl<Btn5Down>,<Btn5Up>:scroll-forw(1,page)\n\
+ <Btn4Down>,<Btn4Up>:scroll-back(1,halfpage)\n\
+ <Btn5Down>,<Btn5Up>:scroll-forw(1,halfpage)\n\
+
+!# In the scrollbar we map buttons 5 & 4 to 1 and 2 otherwise, core dump
+!# This will move proportionnaly to cursor position but we dont know how to
+!# program the same exact behavior as in the text widget.
+XTerm.vt100.Scrollbar.translations: #override\n\
+     <Btn5Down>: StartScroll(Forward)\n\
+     <Btn4Down>: StartScroll(Backward)\n\
+
+!## Athena text widgets
+*Paned.Text.translations: #override\n\
+ Shift<Btn4Down>,<Btn4Up>: scroll-one-line-down()\n\
+ Shift<Btn5Down>,<Btn5Up>: scroll-one-line-up()\n\
+ Ctrl<Btn4Down>,<Btn4Up>: previous-page()\n\
+ Ctrl<Btn5Down>,<Btn5Up>: next-page()\n\
+ None<Btn4Down>,<Btn4Up>:scroll-one-line-down()scroll-one-line-down()scroll-one-line-down()scroll-one-line-down()scroll-one-line-down()\n\
+ None<Btn5Down>,<Btn5Up>:scroll-one-line-up()scroll-one-line-up()scroll-one-line-up()scroll-one-line-up()scroll-one-line-up()\n\
+
+
+
+!## Athena table of contents, for toc widgets of xrn & xmh
+*toc.Translations: #override\n\
+ Shift<Btn4Down>,<Btn4Up>: scroll-one-line-down()\n\
+ Shift<Btn5Down>,<Btn5Up>: scroll-one-line-up()\n\
+ Ctrl<Btn4Down>,<Btn4Up>: previous-page()\n\
+ Ctrl<Btn5Down>,<Btn5Up>: next-page()\n\
+ None<Btn4Down>,<Btn4Up>:scroll-one-line-down()scroll-one-line-down()scroll-one-line-down()scroll-one-line-down()scroll-one-line-down()\n\
+ None<Btn5Down>,<Btn5Up>:scroll-one-line-up()scroll-one-line-up()scroll-one-line-up()scroll-one-line-up()scroll-one-line-up()\n\
+
+
+
+!## NETSCAPE
+Netscape*drawingArea.translations:  #replace    \
+        <Btn1Down>:           ArmLink()   \n\
+        <Btn2Down>:           ArmLink()   \n\
+        ~Shift<Btn1Up>:       ActivateLink()  \n\
+        ~Shift<Btn2Up>:       ActivateLink(new-window)  \
+                                        DisarmLink()    \n\
+        Shift<Btn1Up>:        ActivateLink(save-only)  \
+                                        DisarmLink()    \n\
+        Shift<Btn2Up>:        ActivateLink(save-only)  \
+                                        DisarmLink()    \n\
+        <Btn1Motion>:             DisarmLinkIfMoved()  \n\
+        <Btn2Motion>:             DisarmLinkIfMoved()  \n\
+        <Btn3Motion>:             DisarmLinkIfMoved()  \n\
+        <Motion>:             DescribeLink()  \n\
+        <Btn3Down>:           xfeDoPopup()    \n\
+        <Btn3Up>:             ActivatePopup() \n\
+        Ctrl<Btn4Down>: PageUp()\n\
+        Ctrl<Btn5Down>: PageDown()\n\
+        Shift<Btn4Down>: LineUp()\n\
+        Shift<Btn5Down>: LineDown()\n\
+         None<Btn4Down>: LineUp()LineUp()LineUp()LineUp()LineUp()LineUp()\n\
+         None<Btn5Down>: LineDown()LineDown()LineDown()LineDown()LineDown()LineDown()\n\
+        Alt<Btn4Down>: xfeDoCommand(forward)\n\
+        Alt<Btn5Down>: xfeDoCommand(back)\n
+
+Netscape*globalNonTextTranslations: #override\n\
+ Shift<Btn4Down>: LineUp()\n\
+ Shift<Btn5Down>: LineDown()\n\
+ None<Btn4Down>:LineUp()LineUp()LineUp()LineUp()LineUp()LineUp()\n\
+ None<Btn5Down>:LineDown()LineDown()LineDown()LineDown()LineDown()LineDown()\n\
+ Alt<Btn4Down>: xfeDoCommand(forward)\n\
+ Alt<Btn5Down>: xfeDoCommand(back)\n
+
+Netscape*documentFonts.xResolution*iso-8859-1: 100
+Netscape*documentFonts.yResolution*iso-8859-1: 100
+
+!# NEdit
+NEdit*text.Translations: #override\n\
+        Shift<Btn4Down>,<Btn4Up>: scroll_up(1)\n\
+        Shift<Btn5Down>,<Btn5Up>: scroll_down(1)\n\
+        Ctrl<Btn4Down>,<Btn4Up>: previous_page()\n\
+        Ctrl<Btn5Down>,<Btn5Up>: next_page(1)\n\
+        <Btn4Down>,<Btn4Up>: scroll_up(3)\n\
+        <Btn5Down>,<Btn5Up>: scroll_down(3)\n
