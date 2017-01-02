@@ -1,0 +1,47 @@
+# Alias definitions
+
+alias ..=". ~/.bash_profile"
+alias zle="zless"
+alias f="file"
+alias c="clear"
+alias ccd="clear; cd"
+alias logout="clear;exit"
+alias logotu="clear;exit"
+alias exit='clear; echo "Bye-bye."; exit'
+alias cd..="cd .."
+alias ytalk="ytalk -x"
+alias ll="ls -l"
+alias llh="ls -lh"
+alias la="ls -a"
+alias lla="ls -al"
+alias lle="ls | less"
+alias l="ls"
+alias s="ls"
+alias sl="ls"
+alias sls="ls"
+alias le="less"
+alias j="jobs"
+alias rusers="rusers -l"
+alias moutn="mount"
+alias umoutn="umount"
+alias xt="xterm -bg black -fg white -ls -fn 9x15 -sl 1500 &"
+alias lbx="lbxproxy :13 -norgbfile -noatomsfile"
+alias ls="ls -F"
+alias Grep=grep
+alias gre=grep
+alias grepp=grep
+alias mrsync="rsync -vaH --rsh=ssh --progress"
+alias drsync="rsync -vaH --rsh=ssh --delete --progress"
+
+# Some special defines if I'm on a Linux box
+
+if which screen > /dev/null 2> /dev/null; then
+    if [[ $LOGNAME != "root" ]]; then
+	alias scr="screen -R; clear; exit"
+	alias scx="screen -x"
+    fi
+fi
+
+if [[ `uname` = "Linux" ]]; then
+    alias ls="ls --color=auto -F"
+fi
