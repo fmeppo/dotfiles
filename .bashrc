@@ -10,7 +10,7 @@ if [ `uname` == "Darwin" ]; then
 fi
 PAGER=`which less`
 EDITOR=vim
-LESSOPEN='|$HOME/.lesspipe.sh %s'
+LESSOPEN='|$HOME/dotfiles/lesspipe.sh %s'
 CVS_RSH=ssh
 BASHRC_SEEN=true
 #LD_PRELOAD=libsdp.so
