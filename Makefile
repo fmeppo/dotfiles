@@ -1,4 +1,4 @@
-CONF_FILES=.aliasrc .bashrc
+CONF_FILES=.aliasrc .bashrc .exrc
 OBSOLETE_FILES=.lesspipe.sh
 OLD_FILES=${HOME}/.dotfiles_old
 
