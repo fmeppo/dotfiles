@@ -1,4 +1,5 @@
 CONF_FILES=.aliasrc .bashrc .bash_profile .cvsrc .exrc .netrc .sig .vimrc .Xresources
+DIRS=.vim
 OBSOLETE_FILES=.lesspipe.sh
 OLD_FILES=${HOME}/.dotfiles_old
 
@@ -26,3 +27,8 @@ install: $(CONF_FILES) $(OLD_FILES)
 
 $(OLD_FILES):
 	mkdir $(OLD_FILES)
+
+$(DIRS):
+	cd ${HOME} && for dir in $(DIRS); do \
+            mkdir -p $$dir ; \
+        done
