@@ -17,7 +17,9 @@ install: $(CONF_FILES) $(OLD_FILES)
 	@cd ${HOME} && for file in $(CONF_FILES); do \
             if [ ! -L $$file ]; then \
                 echo linking $$file ; \
-                mv $$file $(OLD_FILES) ; \
+                if [ -f $$file ]; then \
+                    mv $$file $(OLD_FILES) ; \
+                fi; \
                 ln -s dotfiles/$$file $$file ; \
             fi ; \
         done
