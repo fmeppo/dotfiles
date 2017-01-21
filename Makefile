@@ -1,4 +1,4 @@
-CONF_FILES=.aliasrc .bashrc .bash_profile .cvsrc .exrc .netrc .sig .Xresources
+CONF_FILES=.aliasrc .bashrc .bash_profile .cvsrc .exrc .netrc .sig .vimrc .Xresources
 OBSOLETE_FILES=.lesspipe.sh
 OLD_FILES=${HOME}/.dotfiles_old
 
