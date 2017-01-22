@@ -2,6 +2,8 @@ CONF_FILES=.aliasrc .bashrc .bash_profile .cvsrc .exrc .netrc .sig .vim .vimrc .
 OBSOLETE_FILES=.lesspipe.sh
 OLD_FILES=${HOME}/.dotfiles_old
 
+.PHONY: all update install
+
 all: update install
 
 update:
