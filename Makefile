@@ -9,7 +9,7 @@ all: update install
 update:
 	git pull
 
-install: $(CONF_FILES) $(OLD_FILES)
+install: .submodules $(CONF_FILES) $(OLD_FILES)
 	@cd ${HOME} && for file in $(OBSOLETE_FILES); do \
             if [ -f $$file ]; then \
                 echo removing $$file ; \
@@ -28,3 +28,8 @@ install: $(CONF_FILES) $(OLD_FILES)
 
 $(OLD_FILES):
 	mkdir $(OLD_FILES)
+
+.submodules: .gitmodules
+	git submodule init
+	git submodule update
+	touch .submodules
