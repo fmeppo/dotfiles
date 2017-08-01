@@ -1,6 +1,6 @@
-# ~/.bash_profile: executed by bash(1) for login shells.
-# see /usr/share/doc/bash/examples/startup-files for examples.
-# the files are located in the bash-doc package.
+# .bash_profile
+#
+# Only executed for interactive shells.
 
 # the default umask is set in /etc/login.defs
 #umask 022
@@ -46,8 +46,8 @@ else
     PS_LIST_ALL='ps -eaf'
 fi
 
-# include .bashrc if it exists and we haven't seen it before (since bashrc
-# can now occaisionally include bash_profile)
+# Include .bashrc if it exists and we haven't seen it before (since early
+# versions of bash won't include .bashrc, but later ones do)
 if [ -f ~/.bashrc -a "x${BASHRC_SEEN}x" == "xx" ]; then
     . ~/.bashrc
 fi
@@ -175,7 +175,9 @@ color()
 }
 
 # Include common aliases
-. ~/.aliasrc
+if [ -f ~/.aliasrc ]; then
+    . ~/.aliasrc
+fi
 
 # Pull in a local config, if any.
 if [ -f ~/.localrc ]; then
