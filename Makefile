@@ -26,6 +26,23 @@ install: .submodules $(CONF_FILES) $(OLD_FILES)
             fi ; \
         done
 
+perm_install: .submodules $(CONF_FILES) $(OLD_FILES)
+	@cd ${HOME} && for file in $(OBSOLETE_FILES); do \
+            if [ -f $$file ]; then \
+                echo removing $$file ; \
+                mv $$file $(OLD_FILES) ; \
+            fi ; \
+        done
+	@cd ${HOME} && for file in $(CONF_FILES); do \
+            if [ ! -f $$file ]; then \
+                echo linking $$file ; \
+                if [ -f $$file -o -d $$file ]; then \
+                    mv $$file $(OLD_FILES) ; \
+                fi; \
+                cp -a dotfiles/$$file $$file ; \
+            fi ; \
+        done
+
 $(OLD_FILES):
 	mkdir $(OLD_FILES)
 
