@@ -37,6 +37,7 @@ export PS1="${PS1a}"
 
 # Bash options
 set -o vi
+shopt -s checkwinsize
 
 # Special defines, if I'm on a Linux box
 if [ `uname` == 'Linux' -o `uname` == 'OpenBSD' -o `uname` == 'FreeBSD' ]; then
